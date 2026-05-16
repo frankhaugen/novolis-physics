@@ -3,6 +3,7 @@ using Novolis.Physics.Numerics;
 
 namespace Novolis.Physics.Collision.Simple;
 
+/// <summary>No-op <see cref="IStaticWorld"/> that never reports hits (tests and DI defaults).</summary>
 public sealed class EmptyStaticWorld : IStaticWorld
 {
     public bool Raycast(in Ray3d ray, double maxDistance, out HitInfo hit)

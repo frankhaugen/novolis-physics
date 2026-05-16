@@ -2,6 +2,7 @@ using Novolis.Physics.Numerics;
 
 namespace Novolis.Physics.Aerodynamics;
 
+/// <summary>Inputs for <see cref="SimpleLiftDragModel"/>: atmosphere, altitude, wind, and aero coefficients.</summary>
 public readonly struct SimpleAeroEnvironment
 {
     public SimpleAeroEnvironment(

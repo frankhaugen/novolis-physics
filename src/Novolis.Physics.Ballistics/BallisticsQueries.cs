@@ -3,6 +3,7 @@ using Novolis.Physics.Numerics;
 
 namespace Novolis.Physics.Ballistics;
 
+/// <summary>Raycast and sweep helpers over <see cref="IStaticWorld"/> for projectile-sized queries.</summary>
 public static class BallisticsQueries
 {
     public static bool LineOfSight(IStaticWorld world, in Ray3d ray, double maxDistance, out HitInfo hit) =>

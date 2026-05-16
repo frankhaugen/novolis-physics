@@ -2,6 +2,7 @@ using Novolis.Physics.Abstractions;
 
 namespace Novolis.Physics.Motion;
 
+/// <summary>Aggregates <see cref="IForceModel{TBody,TEnvironment}"/> contributions and integrates one fixed step.</summary>
 public sealed class SimulationPipeline<TBody, TEnvironment>
 {
     private readonly IForceModel<TBody, TEnvironment>[] _forces;

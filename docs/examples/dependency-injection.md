@@ -1,6 +1,8 @@
 # Optional: Microsoft.Extensions.DependencyInjection
 
-Novolis.Physics does not ship a DI package. If your app already uses `Microsoft.Extensions.DependencyInjection`, you can register types yourself:
+Novolis.Physics does not ship a DI package. If your app already uses `Microsoft.Extensions.DependencyInjection`, you can register shared algorithms yourself.
+
+**See also:** [INTEGRATION.md](../INTEGRATION.md) · [ballistics.md](ballistics.md)
 
 ```csharp
 using Microsoft.Extensions.DependencyInjection;

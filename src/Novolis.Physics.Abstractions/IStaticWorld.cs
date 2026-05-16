@@ -2,6 +2,7 @@ using Novolis.Physics.Numerics;
 
 namespace Novolis.Physics.Abstractions;
 
+/// <summary>Query-only static geometry: raycasts and approximate swept primitives.</summary>
 public interface IStaticWorld
 {
     bool Raycast(in Ray3d ray, double maxDistance, out HitInfo hit);

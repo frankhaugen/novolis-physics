@@ -2,6 +2,7 @@ using Novolis.Physics.Numerics;
 
 namespace Novolis.Physics.Collision.Simple;
 
+/// <summary>Indexed triangle soup; immutable after construction.</summary>
 public sealed class StaticTriangleMesh
 {
     public StaticTriangleMesh(Vector3d[] vertices, int[] triangleIndices)

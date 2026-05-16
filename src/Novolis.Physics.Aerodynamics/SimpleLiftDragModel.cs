@@ -4,7 +4,7 @@ using Novolis.Physics.Numerics;
 namespace Novolis.Physics.Aerodynamics;
 
 /// <summary>Quadratic drag plus a crude lift term along (forward × relative velocity).</summary>
-/// <remarks>Time-invariant; <paramref name="timeSeconds"/> is ignored.</remarks>
+/// <remarks>Time-invariant; simulation time passed to <see cref="Evaluate"/> is ignored.</remarks>
 public sealed class SimpleLiftDragModel : IForceModel<RigidBodyState, SimpleAeroEnvironment>
 {
     public ForceSample Evaluate(RigidBodyState body, SimpleAeroEnvironment environment, double timeSeconds)

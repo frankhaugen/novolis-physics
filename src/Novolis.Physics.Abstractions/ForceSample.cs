@@ -2,6 +2,7 @@ using Novolis.Physics.Numerics;
 
 namespace Novolis.Physics.Abstractions;
 
+/// <summary>World-space force (N) and torque (N·m) from one effect; summed before integration.</summary>
 public readonly record struct ForceSample(Vector3d Force, Vector3d Torque)
 {
     public static ForceSample Zero => new(Vector3d.Zero, Vector3d.Zero);

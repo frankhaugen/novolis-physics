@@ -1,5 +1,6 @@
 namespace Novolis.Physics.Numerics;
 
+/// <summary>Ray from <see cref="Origin"/> along <see cref="Direction"/> (prefer unit direction for distance semantics).</summary>
 public readonly struct Ray3d(Vector3d origin, Vector3d direction)
 {
     public Vector3d Origin { get; } = origin;

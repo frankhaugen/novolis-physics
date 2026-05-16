@@ -3,7 +3,8 @@ using Novolis.Physics.Numerics;
 
 namespace Novolis.Physics.Gravity;
 
-/// <remarks>Time-invariant; <paramref name="timeSeconds"/> is ignored.</remarks>
+/// <summary>Two-body patched conic: primary inside SOI, otherwise secondary point mass.</summary>
+/// <remarks>Time-invariant; simulation time passed to <see cref="Evaluate"/> is ignored.</remarks>
 public sealed class PatchedConicGravityModel : IForceModel<RigidBodyState, PatchedConicPairField>
 {
     public ForceSample Evaluate(RigidBodyState body, PatchedConicPairField environment, double timeSeconds)

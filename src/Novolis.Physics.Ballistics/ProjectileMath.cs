@@ -2,6 +2,7 @@ using Novolis.Physics.Numerics;
 
 namespace Novolis.Physics.Ballistics;
 
+/// <summary>Ballistic helpers: ground-plane crossing interpolation and scalar lerp.</summary>
 public static class ProjectileMath
 {
     /// <summary>Linear interpolation between <paramref name="a"/> and <paramref name="b"/> by parameter <paramref name="t"/>.</summary>

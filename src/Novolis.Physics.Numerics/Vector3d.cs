@@ -1,5 +1,6 @@
 namespace Novolis.Physics.Numerics;
 
+/// <summary>Right-handed 3D vector in SI meters (or any consistent length unit).</summary>
 public readonly struct Vector3d(double x, double y, double z) : IEquatable<Vector3d>
 {
     public double X { get; } = x;

@@ -2,6 +2,7 @@ using Novolis.Physics.Numerics;
 
 namespace Novolis.Physics.Ballistics;
 
+/// <summary>Point-mass projectile: position, velocity, mass, and optional elapsed time.</summary>
 public readonly struct ProjectileState
 {
     public ProjectileState(Vector3d position, Vector3d velocity, double massKg, double timeSeconds = 0)

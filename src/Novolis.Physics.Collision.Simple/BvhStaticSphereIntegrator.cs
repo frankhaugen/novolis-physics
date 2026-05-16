@@ -5,8 +5,7 @@ namespace Novolis.Physics.Collision.Simple;
 
 /// <summary>
 /// Integrates a sphere against a static <see cref="BvhStaticWorld"/> with optional uniform acceleration,
-/// optional isotropic linear drag, and Newton restitution at contacts. Suitable for any environment where
-/// <paramref name="uniformAccelerationMps2"/> is approximately constant over the step (use <see cref="Vector3d.Zero"/> in free space).
+/// optional isotropic linear drag, and Newton restitution at contacts.
 /// </summary>
 public static class BvhStaticSphereIntegrator
 {
@@ -17,7 +16,7 @@ public static class BvhStaticSphereIntegrator
     public static Vector3d LinearDragAcceleration(in Vector3d velocityMps, double dragPerSecond) =>
         -dragPerSecond * velocityMps;
 
-    /// <summary>Same as <see cref="AdvanceOneStep"/> using <paramref name="dt"/>.<see cref="TimeSpan.TotalSeconds"/>.</summary>
+    /// <summary>Same as the <c>double dtSeconds</c> overload using <paramref name="dt"/>.<see cref="TimeSpan.TotalSeconds"/>.</summary>
     public static int AdvanceOneStep(
         BvhStaticWorld world,
         ref Vector3d centerM,
@@ -95,7 +94,7 @@ public static class BvhStaticSphereIntegrator
         return reflections;
     }
 
-    /// <summary>Same as <see cref="AdvanceWithUniformAccelerationAndLinearDrag"/> with <paramref name="dt"/>.<see cref="TimeSpan.TotalSeconds"/>.</summary>
+    /// <summary>Same as the <c>double dtSeconds</c> overload using <paramref name="dt"/>.<see cref="TimeSpan.TotalSeconds"/>.</summary>
     public static int AdvanceWithUniformAccelerationAndLinearDrag(
         BvhStaticWorld world,
         ref Vector3d centerM,
@@ -122,7 +121,7 @@ public static class BvhStaticSphereIntegrator
             normalRestitution);
 
     /// <summary>
-    /// Each sub-step: optional linear drag on velocity, then uniform acceleration, then <see cref="AdvanceOneStep"/>.
+    /// Each sub-step: optional linear drag on velocity, then uniform acceleration, then sphere sweep integration.
     /// </summary>
     public static int AdvanceWithUniformAccelerationAndLinearDrag(
         BvhStaticWorld world,

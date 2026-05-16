@@ -1,5 +1,6 @@
 namespace Novolis.Physics.Ballistics;
 
+/// <summary>Mass, reference area, and drag coefficient for quadratic drag models.</summary>
 public readonly struct ProjectileProfile
 {
     public ProjectileProfile(double massKg, double referenceAreaM2, double dragCoefficient)

@@ -2,6 +2,8 @@
 
 Force-first physics simulation for .NET — numerics, motion pipeline, gravity, ballistics, collision, and orbits.
 
+**Documentation:** [docs/README.md](docs/README.md) (integration guide, architecture, examples).
+
 ## Install
 
 ```bash
@@ -42,7 +44,16 @@ acc.AddTimeAndDrain(1.0 / 30.0, dt =>
 });
 ```
 
-See [docs/INTEGRATION.md](docs/INTEGRATION.md) for ballistics (facade vs pipeline), collision, and orbits. Optional DI wiring: [docs/examples/dependency-injection.md](docs/examples/dependency-injection.md). Versioning: [docs/VERSIONING.md](docs/VERSIONING.md).
+See [docs/INTEGRATION.md](docs/INTEGRATION.md) for ballistics (facade vs pipeline), collision, and orbits. Copy-paste recipes: [docs/examples/](docs/examples/). Architecture overview: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md). Versioning: [docs/VERSIONING.md](docs/VERSIONING.md).
+
+## Integration styles
+
+| Goal | Start with |
+|------|------------|
+| Rigid body + custom forces | `SimulationPipeline` + `SemiImplicitEulerRigidBodyIntegrator` |
+| Cannon / drag prototype | `ProjectileBallisticSimulation` |
+| Sphere in a static mesh | `BvhStaticSphereIntegrator` + `BvhStaticWorld` |
+| Two-body orbit tests | `CentralOrbitSimulator` (separate from the pipeline) |
 
 ## Conventions
 

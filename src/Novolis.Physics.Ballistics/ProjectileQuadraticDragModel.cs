@@ -4,7 +4,7 @@ using Novolis.Physics.Numerics;
 namespace Novolis.Physics.Ballistics;
 
 /// <summary>Point mass with quadratic drag F = -½ ρ Cd A |v| v in world space.</summary>
-/// <remarks>Time-invariant; <paramref name="timeSeconds"/> is ignored.</remarks>
+/// <remarks>Time-invariant; simulation time passed to <see cref="Evaluate"/> is ignored.</remarks>
 public sealed class ProjectileQuadraticDragModel : IForceModel<ProjectileState, ProjectileDragEnvironment>
 {
     private readonly ProjectileProfile _profile;

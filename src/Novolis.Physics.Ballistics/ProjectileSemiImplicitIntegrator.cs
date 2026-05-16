@@ -3,6 +3,7 @@ using Novolis.Physics.Numerics;
 
 namespace Novolis.Physics.Ballistics;
 
+/// <summary>Semi-implicit Euler for <see cref="ProjectileState"/> (no orientation).</summary>
 public sealed class ProjectileSemiImplicitIntegrator : IIntegrator<ProjectileState>
 {
     public ProjectileState Step(ProjectileState body, in ForceSample totalForcesAndTorques, double dtSeconds)

@@ -1,5 +1,6 @@
 namespace Novolis.Physics.Numerics;
 
+/// <summary>Axis-aligned bounding box from inclusive min/max corners.</summary>
 public readonly struct AxisAlignedBox3d(Vector3d min, Vector3d max)
 {
     public Vector3d Min { get; } = min;
