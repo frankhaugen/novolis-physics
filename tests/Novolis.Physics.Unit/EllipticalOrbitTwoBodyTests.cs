@@ -2,6 +2,7 @@ using System.Numerics;
 using Novolis.Physics.Numerics;
 using Novolis.Physics.Orbits;
 using Novolis.Physics.TestSupport;
+using Novolis.Physics.TestSupport.Orbits;
 using TUnit.Core;
 
 namespace Novolis.Physics.Unit;
@@ -411,5 +412,22 @@ public sealed class EllipticalOrbitTwoBodyTests
 
         o.Line("Vector.IsHardwareAccelerated", Vector.IsHardwareAccelerated ? "true" : "false");
         o.Line("Vector<double>.Count", Vector<double>.Count);
+    }
+
+    [Test]
+    public async Task SimulateFor_ReusedSoA_MatchesConvenienceOverload()
+    {
+        var ic = OrbitalTestState.CreatePeriapsisState();
+        var mu = OrbitalTestConstants.Mu;
+        var duration = OrbitalTestConstants.Period * 0.1;
+        var soa = new LeapfrogCentralBodySoA(mu, bodyCount: 1);
+
+        var reused = CentralOrbitSimulator.SimulateFor(ic, soa, bodyIndex: 0, duration, DtSeconds, KernelMode.Scalar);
+        var convenience = CentralOrbitSimulator.SimulateFor(ic, duration, DtSeconds, KernelMode.Scalar, mu);
+
+        await Assert.That(reused.Position.X).IsEqualTo(convenience.Position.X).Within(1e-6);
+        await Assert.That(reused.Position.Y).IsEqualTo(convenience.Position.Y).Within(1e-6);
+        await Assert.That(reused.Velocity.X).IsEqualTo(convenience.Velocity.X).Within(1e-6);
+        await Assert.That(reused.Velocity.Y).IsEqualTo(convenience.Velocity.Y).Within(1e-6);
     }
 }

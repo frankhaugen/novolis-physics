@@ -1,6 +1,7 @@
 using Novolis.Physics.Numerics;
+using Novolis.Physics.Orbits;
 
-namespace Novolis.Physics.Orbits;
+namespace Novolis.Physics.TestSupport.Orbits;
 
 /// <summary>Canonical initial conditions for the elliptical Earth test scenario (periapsis on +X, velocity along +Y).</summary>
 public static class OrbitalTestState

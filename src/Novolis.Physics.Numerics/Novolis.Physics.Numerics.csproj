@@ -8,7 +8,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RootNamespace>Novolis.Physics.Numerics</RootNamespace>
-    <Description>Double-precision vectors, rays, and collision primitives for Novolis.Physics.</Description>
+    <Description>Double-precision vectors, rays, and collision primitives for Novolis.Physics. Right-handed 3D; +Y up (gravity/ballistics use −Y).</Description>
   </PropertyGroup>
 
 </Project>

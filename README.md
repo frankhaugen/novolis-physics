@@ -42,7 +42,13 @@ acc.AddTimeAndDrain(1.0 / 30.0, dt =>
 });
 ```
 
-See [docs/INTEGRATION.md](docs/INTEGRATION.md) for ballistics, collision, and orbits. Optional DI wiring: [docs/examples/dependency-injection.md](docs/examples/dependency-injection.md).
+See [docs/INTEGRATION.md](docs/INTEGRATION.md) for ballistics (facade vs pipeline), collision, and orbits. Optional DI wiring: [docs/examples/dependency-injection.md](docs/examples/dependency-injection.md). Versioning: [docs/VERSIONING.md](docs/VERSIONING.md).
+
+## Conventions
+
+- Right-handed 3D coordinates; **+Y is up**.
+- Gravity and ballistics use **−Y** for uniform gravity.
+- Planar cannon problems often use +X range with `Z = 0`.
 
 ## Packages
 
@@ -50,7 +56,7 @@ See [docs/INTEGRATION.md](docs/INTEGRATION.md) for ballistics, collision, and or
 |---------|------|
 | `Novolis.Physics` | Aggregate — all product packages |
 | `Novolis.Physics.Numerics` | Vectors, rays, primitives |
-| `Novolis.Physics.Abstractions` | Force models, integrators, contacts |
+| `Novolis.Physics.Abstractions` | Force models, integrators, static-world queries |
 | `Novolis.Physics.Motion` | Rigid-body motion pipeline |
 | `Novolis.Physics.Gravity` | Point / patched-conic gravity |
 | `Novolis.Physics.Aerodynamics` | Lift / drag models |

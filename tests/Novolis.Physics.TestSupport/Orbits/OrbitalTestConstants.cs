@@ -1,4 +1,4 @@
-namespace Novolis.Physics.Orbits;
+namespace Novolis.Physics.TestSupport.Orbits;
 
 /// <summary>Earth-centered elliptical test orbit (planar motion in XY, Z and Vz zero).</summary>
 public static class OrbitalTestConstants

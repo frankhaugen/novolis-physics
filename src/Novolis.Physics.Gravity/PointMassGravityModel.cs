@@ -3,6 +3,7 @@ using Novolis.Physics.Numerics;
 
 namespace Novolis.Physics.Gravity;
 
+/// <remarks>Time-invariant; <paramref name="timeSeconds"/> is ignored.</remarks>
 public sealed class PointMassGravityModel : IForceModel<RigidBodyState, PointMassField>
 {
     public ForceSample Evaluate(RigidBodyState body, PointMassField environment, double timeSeconds)

@@ -1,7 +1,7 @@
 # Novolis.Physics — Design Review Findings
 
 **Review date:** 2026-05-16  
-**Version reviewed:** 0.1.0-alpha (`net10.0`)  
+**Version reviewed:** 0.1.0-alpha (`net10.0`) — **remediation shipped in 0.2.0-alpha**  
 **Scope:** Full review per library design review plan (API stability, architecture, consumer ergonomics, correctness, performance spot-check)
 
 **Test run:** `dotnet run --project tests/Novolis.Physics.Unit -c Release` — **46/46 passed** (967 ms)
@@ -33,7 +33,7 @@ Numerics
 |---------|------|------|
 | **Numerics** | `Vector3d`, `Quaterniond`, `Ray3d`, `Sphere3d`, `Capsule3d`, `AxisAlignedBox3d` | Value / geometry |
 | **Abstractions** | `IForceModel<>`, `IIntegrator<>`, `IStaticWorld` | Contract |
-| **Abstractions** | `IContactResolver<>` | Contract (**orphan**) |
+| **Abstractions** | ~~`IContactResolver<>`~~ | Removed in 0.2.0-alpha |
 | **Abstractions** | `RigidBodyState`, `ForceSample`, `HitInfo` | State / sample |
 | **Motion** | `SimulationPipeline<>`, `SemiImplicitEulerRigidBodyIntegrator`, `FixedStepAccumulator` | Algorithm / orchestration |
 | **Motion** | `UniformAccelerationEnergy` | Helper |
@@ -48,7 +48,8 @@ Numerics
 | **Ballistics** | `ProjectileBallisticSimulation` | Facade (monolithic step) |
 | **Ballistics** | `ProjectileMath`, `BallisticsQueries`, `GroundImpact` | Helper / query |
 | **Orbits** | `OrbitState`, `LeapfrogCentralBodySoA`, `CentralOrbitSimulator` | Parallel integration stack |
-| **Orbits** | `OrbitalMath`, `OrbitalTestConstants`, `OrbitalTestState`, `KernelMode` | Helper / test fixtures (**in product package**) |
+| **Orbits** | `OrbitalMath`, `KernelMode` | Helper |
+| **TestSupport** | `OrbitalTestConstants`, `OrbitalTestState` | Test fixtures (not published) |
 | **Novolis.Physics** | (none) | Meta-package only |
 
 *Former `Novolis.Physics.KspLite` package removed — see [examples/dependency-injection.md](examples/dependency-injection.md).*
@@ -59,9 +60,9 @@ Numerics
 
 | Item | Status |
 |------|--------|
-| `IContactResolver<TBody>` | **Zero implementations** in repo; contact handled via `SphereContactKinematics` + `BvhStaticSphereIntegrator` |
-| `IForceModel.Evaluate(..., timeSeconds)` | Parameter **unused** in all shipped force models |
-| `OrbitalTestConstants` / `OrbitalTestState` | Public in **Orbits** product package; naming implies test-only |
+| ~~`IContactResolver<TBody>`~~ | **Removed** in 0.2.0-alpha; contact via `SphereContactKinematics` + `BvhStaticSphereIntegrator` |
+| `IForceModel.Evaluate(..., timeSeconds)` | Documented as simulation time; shipped models are time-invariant |
+| ~~`OrbitalTestConstants` / `OrbitalTestState`~~ | **Moved** to `Novolis.Physics.TestSupport.Orbits` in 0.2.0-alpha |
 
 ---
 
@@ -203,21 +204,21 @@ Four distinct simulation styles coexist:
 
 | ID | Severity | Area | Finding | Recommendation | Effort |
 |----|----------|------|---------|----------------|--------|
-| DR-001 | **Major** | Abstractions | `IContactResolver<TBody>` is public with **no implementations**; contact logic lives in `SphereContactKinematics` / `BvhStaticSphereIntegrator` | Remove before stable, or move to experimental namespace; document actual contact API | S |
+| DR-001 | ~~Major~~ **Resolved** | Abstractions | `IContactResolver<TBody>` removed; contact API documented in INTEGRATION.md | Fixed in 0.2.0-alpha | — |
 | DR-002 | ~~Major~~ **Resolved** | Architecture | Four integration styles | [INTEGRATION.md](INTEGRATION.md) added | — |
 | DR-003 | ~~Major~~ **Resolved** | KspLite | Removed example package | README + INTEGRATION.md + optional DI doc | — |
 | DR-004 | ~~Major~~ **Resolved** | Packaging | KspLite/meta mismatch | KspLite removed; meta = product packages only | — |
-| DR-005 | **Major** | Orbits | `OrbitalTestConstants` / `OrbitalTestState` are **public product API** with test-oriented names | Rename to product names (e.g. `ReferenceEllipticalOrbit`) or move to test project before stable | M |
-| DR-006 | **Major** | Collision | `IStaticWorld` sweeps are **approximate** (documented in XML) but no consumer example of failure cases | Add doc + optional test demonstrating conservative vs missed hit | M |
-| DR-007 | Minor | Abstractions | `timeSeconds` on `IForceModel.Evaluate` is **unused** by all implementations | Use for time-varying forces, or mark `[Obsolete]` / document as reserved | S |
+| DR-005 | ~~Major~~ **Resolved** | Orbits | Fixtures moved to `Novolis.Physics.TestSupport.Orbits` | Fixed in 0.2.0-alpha | — |
+| DR-006 | ~~Major~~ **Resolved** | Collision | Sweep limitations documented; `SweepLimitationScenarioTests` added | Fixed in 0.2.0-alpha | — |
+| DR-007 | ~~Minor~~ **Resolved** | Abstractions | `timeSeconds` documented on `IForceModel` and shipped models | Fixed in 0.2.0-alpha | — |
 | DR-008 | ~~Minor~~ **Resolved** | Docs | Root README had no code example | README quick start added | — |
-| DR-009 | Minor | Docs | TestSupport README references **StarConflictsRevolt** paths | Update to Novolis.Physics paths and project names | S |
-| DR-010 | Minor | Ballistics | Dual path (facade vs pipeline) is **parity-tested but undocumented** for consumers | Cross-link in README; state facade = pipeline for default drag | S |
-| DR-011 | Minor | Motion | `SimulationPipeline` does not advance `timeSeconds` automatically | Document caller responsibility to pass `timeSeconds + dt` on each step | S |
+| DR-009 | ~~Minor~~ **Resolved** | Docs | TestSupport README rewritten for Novolis.Physics | Fixed in 0.2.0-alpha | — |
+| DR-010 | ~~Minor~~ **Resolved** | Ballistics | Dual path documented in INTEGRATION.md and README | Fixed in 0.2.0-alpha | — |
+| DR-011 | ~~Minor~~ **Resolved** | Motion | Caller time advance documented on `SimulationPipeline.Step` and INTEGRATION.md | Fixed in 0.2.0-alpha | — |
 | DR-012 | ~~Minor~~ **Resolved** | KspLite | N/A | Package removed | — |
-| DR-013 | Nit | Orbits | `CentralOrbitSimulator.SimulateFor` allocates new SoA **per call** | Document; offer overload accepting pre-allocated `LeapfrogCentralBodySoA` for hot paths | M |
-| DR-014 | Nit | Collision | `BallisticsQueries` is thin wrapper over `IStaticWorld` | Keep as discoverability alias; optional merge into docs only | S |
-| DR-015 | Nit | Numerics | Axis convention (+Y up) not stated on core types | One paragraph in README or Numerics package description | S |
+| DR-013 | ~~Nit~~ **Resolved** | Orbits | Reuse overload added; convenience overload documented | Fixed in 0.2.0-alpha | — |
+| DR-014 | ~~Nit~~ **Resolved** | Collision | Documented in INTEGRATION.md | Fixed in 0.2.0-alpha | — |
+| DR-015 | ~~Nit~~ **Resolved** | Numerics | README Conventions + Numerics package description | Fixed in 0.2.0-alpha | — |
 
 **Blockers:** None identified in this review.
 
@@ -225,22 +226,23 @@ Four distinct simulation styles coexist:
 
 ## Prioritized post-review backlog
 
-### P0 — Before stable (0.2.0)
+### P0 — Before stable (0.2.0) — **Complete**
 
-1. **DR-001** — Resolve `IContactResolver` (remove or implement).
-2. **DR-005** — Orbit reference API naming or relocation.
+1. ~~**DR-001**~~ — `IContactResolver` removed.
+2. ~~**DR-005**~~ — Orbit fixtures moved to TestSupport.
 
-### P1 — Early stable
+### P1 — Early stable — **Complete**
 
-5. **DR-006** — Sweep limitations with worked example.
-6. **DR-010** — Ballistics path documentation (partially covered by INTEGRATION.md).
-7. **Semver policy** — Document what 0.1.0-alpha guarantees (breaking changes allowed, orphan API may be removed).
+3. ~~**DR-006**~~ — Sweep limitations doc + test.
+4. ~~**DR-010**~~ — Ballistics path documentation.
+5. ~~**Semver policy**~~ — [VERSIONING.md](VERSIONING.md).
 
-### P2 — Nice to have
+### P2 — Nice to have — **Complete**
 
-8. **DR-007** — Time-varying forces or API cleanup for `timeSeconds`.
-9. **DR-013** — Orbit simulator reuse API.
-10. **DR-009** — TestSupport README cleanup.
+6. ~~**DR-007**~~ — `timeSeconds` documented.
+7. ~~**DR-013**~~ — Orbit simulator reuse API.
+8. ~~**DR-009**~~ — TestSupport README cleanup.
+9. ~~**DR-011**, **DR-014**, **DR-015**~~ — Documented in 0.2.0-alpha.
 
 ---
 

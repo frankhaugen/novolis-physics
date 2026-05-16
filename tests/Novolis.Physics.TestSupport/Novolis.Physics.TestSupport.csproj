@@ -5,4 +5,9 @@
     <RootNamespace>Novolis.Physics.TestSupport</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Novolis.Physics.Numerics\Novolis.Physics.Numerics.csproj" />
+    <ProjectReference Include="..\..\src\Novolis.Physics.Orbits\Novolis.Physics.Orbits.csproj" />
+  </ItemGroup>
+
 </Project>

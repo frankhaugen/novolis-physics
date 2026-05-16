@@ -1,6 +1,6 @@
 <Project>
   <PropertyGroup Label="Novolis.Physics NuGet metadata">
-    <NovolisPhysicsVersion Condition="'$(NovolisPhysicsVersion)' == ''">0.1.0-alpha</NovolisPhysicsVersion>
+    <NovolisPhysicsVersion Condition="'$(NovolisPhysicsVersion)' == ''">0.2.0-alpha</NovolisPhysicsVersion>
     <Version>$(NovolisPhysicsVersion)</Version>
     <Authors>Novolis</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

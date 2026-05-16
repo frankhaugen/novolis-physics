@@ -15,6 +15,10 @@ public sealed class SimulationPipeline<TBody, TEnvironment>
 
     public IReadOnlyList<IForceModel<TBody, TEnvironment>> Forces => _forces;
 
+    /// <summary>
+    /// Sums all force models and integrates one fixed step.
+    /// Does not advance <paramref name="timeSeconds"/>; the caller must pass <c>timeSeconds + dtSeconds</c> on the next step.
+    /// </summary>
     public TBody Step(TBody body, TEnvironment environment, double dtSeconds, double timeSeconds = 0)
     {
         var total = ForceSample.Zero;
