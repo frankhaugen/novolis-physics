@@ -1,0 +1,18 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Novolis.Physics.Numerics/Novolis.Physics.Numerics.csproj" />
+    <Project Path="src/Novolis.Physics.Abstractions/Novolis.Physics.Abstractions.csproj" />
+    <Project Path="src/Novolis.Physics.Motion/Novolis.Physics.Motion.csproj" />
+    <Project Path="src/Novolis.Physics.Gravity/Novolis.Physics.Gravity.csproj" />
+    <Project Path="src/Novolis.Physics.Aerodynamics/Novolis.Physics.Aerodynamics.csproj" />
+    <Project Path="src/Novolis.Physics.Collision.Simple/Novolis.Physics.Collision.Simple.csproj" />
+    <Project Path="src/Novolis.Physics.Ballistics/Novolis.Physics.Ballistics.csproj" />
+    <Project Path="src/Novolis.Physics.Orbits/Novolis.Physics.Orbits.csproj" />
+    <Project Path="src/Novolis.Physics.KspLite/Novolis.Physics.KspLite.csproj" />
+    <Project Path="src/Novolis.Physics/Novolis.Physics.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Novolis.Physics.TestSupport/Novolis.Physics.TestSupport.csproj" />
+    <Project Path="tests/Novolis.Physics.Unit/Novolis.Physics.Unit.csproj" />
+  </Folder>
+</Solution>

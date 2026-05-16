@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Physics.Packaging.props" />
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>Novolis.Physics.Orbits</PackageId>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Novolis.Physics.Orbits</RootNamespace>
+    <Description>Central-body orbital helpers, fixed-step Leapfrog, and SoA-oriented kernels (Vector3d only).</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Physics.Numerics/Novolis.Physics.Numerics.csproj" />
+  </ItemGroup>
+</Project>

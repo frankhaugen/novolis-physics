@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Physics.Packaging.props" />
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>Novolis.Physics.Abstractions</PackageId>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Novolis.Physics.Abstractions</RootNamespace>
+    <Description>Force models, static world queries, and integration contracts for Novolis.Physics.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Physics.Numerics/Novolis.Physics.Numerics.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup Label="Novolis.Physics NuGet metadata">
+    <NovolisPhysicsVersion Condition="'$(NovolisPhysicsVersion)' == ''">0.1.0-alpha</NovolisPhysicsVersion>
+    <Version>$(NovolisPhysicsVersion)</Version>
+    <Authors>Novolis</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/frankhaugen/novolis-physics</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/frankhaugen/novolis-physics</RepositoryUrl>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageTags>physics;simulation;orbits;ballistics;gravity</PackageTags>
+  </PropertyGroup>
+</Project>

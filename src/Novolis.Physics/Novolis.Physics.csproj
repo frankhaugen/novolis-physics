@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Physics.Packaging.props" />
+
+  <PropertyGroup>
+    <RootNamespace>Novolis.Physics</RootNamespace>
+    <AssemblyName>Novolis.Physics</AssemblyName>
+    <PackageId>Novolis.Physics</PackageId>
+    <IsPackable>true</IsPackable>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Description>Force-first simulation stack for games and tools — one install for all Novolis.Physics packages.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Physics.Numerics\Novolis.Physics.Numerics.csproj" />
+    <ProjectReference Include="..\Novolis.Physics.Abstractions\Novolis.Physics.Abstractions.csproj" />
+    <ProjectReference Include="..\Novolis.Physics.Motion\Novolis.Physics.Motion.csproj" />
+    <ProjectReference Include="..\Novolis.Physics.Gravity\Novolis.Physics.Gravity.csproj" />
+    <ProjectReference Include="..\Novolis.Physics.Aerodynamics\Novolis.Physics.Aerodynamics.csproj" />
+    <ProjectReference Include="..\Novolis.Physics.Collision.Simple\Novolis.Physics.Collision.Simple.csproj" />
+    <ProjectReference Include="..\Novolis.Physics.Ballistics\Novolis.Physics.Ballistics.csproj" />
+    <ProjectReference Include="..\Novolis.Physics.Orbits\Novolis.Physics.Orbits.csproj" />
+    <ProjectReference Include="..\Novolis.Physics.KspLite\Novolis.Physics.KspLite.csproj" />
+  </ItemGroup>
+
+</Project>

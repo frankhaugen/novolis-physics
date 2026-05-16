@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Physics.Packaging.props" />
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>Novolis.Physics.Aerodynamics</PackageId>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Novolis.Physics.Aerodynamics</RootNamespace>
+    <Description>Atmosphere density hooks and simple lift/drag force models.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Physics.Abstractions/Novolis.Physics.Abstractions.csproj" />
+    <ProjectReference Include="..\Novolis.Physics.Numerics/Novolis.Physics.Numerics.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Physics.Packaging.props" />
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>Novolis.Physics.Gravity</PackageId>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Novolis.Physics.Gravity</RootNamespace>
+    <Description>Point and spherical gravity force models for Novolis.Physics.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Physics.Abstractions/Novolis.Physics.Abstractions.csproj" />
+    <ProjectReference Include="..\Novolis.Physics.Numerics/Novolis.Physics.Numerics.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\build\Novolis.Physics.Packaging.props" />
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageId>Novolis.Physics.Ballistics</PackageId>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>Novolis.Physics.Ballistics</RootNamespace>
+    <Description>Projectile drag helpers and static-world ray/sweep queries.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Novolis.Physics.Abstractions/Novolis.Physics.Abstractions.csproj" />
+    <ProjectReference Include="..\Novolis.Physics.Collision.Simple/Novolis.Physics.Collision.Simple.csproj" />
+    <ProjectReference Include="..\Novolis.Physics.Numerics/Novolis.Physics.Numerics.csproj" />
+  </ItemGroup>
+</Project>
