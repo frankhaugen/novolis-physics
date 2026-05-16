@@ -8,7 +8,6 @@
     <Project Path="src/Novolis.Physics.Collision.Simple/Novolis.Physics.Collision.Simple.csproj" />
     <Project Path="src/Novolis.Physics.Ballistics/Novolis.Physics.Ballistics.csproj" />
     <Project Path="src/Novolis.Physics.Orbits/Novolis.Physics.Orbits.csproj" />
-    <Project Path="src/Novolis.Physics.KspLite/Novolis.Physics.KspLite.csproj" />
     <Project Path="src/Novolis.Physics/Novolis.Physics.csproj" />
   </Folder>
   <Folder Name="/tests/">

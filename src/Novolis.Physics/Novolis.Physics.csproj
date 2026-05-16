@@ -24,7 +24,6 @@
     <ProjectReference Include="..\Novolis.Physics.Collision.Simple\Novolis.Physics.Collision.Simple.csproj" />
     <ProjectReference Include="..\Novolis.Physics.Ballistics\Novolis.Physics.Ballistics.csproj" />
     <ProjectReference Include="..\Novolis.Physics.Orbits\Novolis.Physics.Orbits.csproj" />
-    <ProjectReference Include="..\Novolis.Physics.KspLite\Novolis.Physics.KspLite.csproj" />
   </ItemGroup>
 
 </Project>

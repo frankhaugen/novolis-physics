@@ -9,7 +9,6 @@ $pkgs = @(
     "src/Novolis.Physics.Collision.Simple/Novolis.Physics.Collision.Simple.csproj",
     "src/Novolis.Physics.Ballistics/Novolis.Physics.Ballistics.csproj",
     "src/Novolis.Physics.Orbits/Novolis.Physics.Orbits.csproj",
-    "src/Novolis.Physics.KspLite/Novolis.Physics.KspLite.csproj",
     "src/Novolis.Physics/Novolis.Physics.csproj"
 )
 Push-Location $root
